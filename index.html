@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shahzaib Farrukh | Portfolio (Enhanced)</title>
+    <!-- IDEA 1: Updated Title for SEO -->
+    <title>Shahzaib Farrukh | Web Developer & SEO Specialist Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     
@@ -246,6 +247,12 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Min size increased */
             gap: 1.5rem;
         }
+        
+        /* NEW: Style for the anchor wrapping the project card */
+        .project-link {
+            text-decoration: none;
+            color: inherit; 
+        }
 
         .project {
             background-color: var(--bg); /* Light background for card body */
@@ -254,10 +261,11 @@
             border-left: 5px solid var(--secondary); /* Accent border */
             transition: var(--transition);
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            height: 100%; /* Ensure all cards in the grid are the same height */
         }
         
-        /* Professional Project Hover Effect */
-        .project:hover {
+        /* Professional Project Hover Effect on the link */
+        .project-link:hover .project {
             box-shadow: 0 8px 20px rgba(0,0,0,0.15);
             transform: translateY(-5px);
             border-left-color: var(--primary); /* Hover color change */
@@ -485,7 +493,7 @@
         <div class="skills-list">
             <div class="skill">HTML5</div>
             <div class="skill">CSS3</div>
-            <div class="skill">JavaScript (Learning)</div>
+            <div class="skill">Vanilla JavaScript</div>
             <div class="skill">SEO (Off-Page)</div>
             <div class="skill">WordPress</div>
             <div class="skill">Google Analytics</div>
@@ -496,18 +504,31 @@
     <section id="projects" class="projects section-padding">
         <h2>Projects</h2>
         <div class="project-grid">
-            <div class="project">
-                <h3>Portfolio Website</h3>
-                <p>A personal website built using HTML & CSS to showcase my skills and experience. Demonstrates responsive design and clean structure.</p>
-            </div>
-            <div class="project">
-                <h3>SEO Campaign Analysis</h3>
-                <p>Worked on Off-Page SEO projects analyzing backlinks, keywords, and performance metrics, showcasing optimization and data analysis skills.</p>
-            </div>
-            <div class="project">
-                <h3>Landing Page Design</h3>
-                <p>Designed a fully responsive landing page as a part of my Web Development training project, focusing on UI/UX principles.</p>
-            </div>
+            
+            <!-- 🟢 NEW PROJECT: Knowledge Seekers Institute (Linked) -->
+            <a href="https://knowledge-seekers-ks.vercel.app/" target="_blank" class="project-link" aria-label="View Knowledge Seekers Institute website">
+                <div class="project">
+                    <h3>Knowledge Seekers Institute</h3>
+                    <p>Fully responsive institutional website built for a coaching center using HTML, CSS, and vanilla JavaScript. Demonstrates practical application of frontend skills.</p>
+                </div>
+            </a>
+
+            <!-- Portfolio Website (Now Linked) -->
+            <a href="https://shahzaibf-portfolio.vercel.app/" target="_blank" class="project-link" aria-label="View Personal Portfolio website">
+                <div class="project">
+                    <h3>Personal Portfolio Website</h3>
+                    <p>My current portfolio, showcasing my skills in HTML, CSS, and implementation of modern features like smooth scrolling.</p>
+                </div>
+            </a>
+
+            <!-- SEO Campaign Analysis -->
+            <a href="#" target="_blank" class="project-link" aria-label="View SEO Campaign Analysis details">
+                <div class="project">
+                    <h3>SEO Campaign Analysis</h3>
+                    <p>A sample project demonstrating Off-Page & On-Page SEO expertise, including backlink auditing, keyword strategy, and competitor analysis.</p>
+                </div>
+            </a>
+            
         </div>
     </section>
 
