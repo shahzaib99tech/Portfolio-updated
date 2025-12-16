@@ -114,6 +114,17 @@
         nav a:hover::after {
             width: 100%;
         }
+        
+        /* Active link indicator for the current section */
+        nav a.active {
+            font-weight: 600;
+            color: var(--secondary);
+        }
+        
+        nav a.active::after {
+            width: 100%;
+            background-color: var(--secondary);
+        }
 
         /* Mobile Menu Button (Hamburger) */
         .menu-toggle {
@@ -202,7 +213,7 @@
         }
 
         /* --- 6. Section Styles (About, Skills, Projects, Contact) --- */
-        .about, .skills, .projects, .contact {
+        .about, .skills, .projects, .contact, .testimonials {
             background-color: white;
             padding: 2.5rem; /* Increased padding */
             border-radius: var(--radius);
@@ -223,22 +234,43 @@
             justify-content: center;
         }
 
+        /* 🟢 NEW: Skill Card and Proficiency Styling */
         .skill {
-            background-color: var(--secondary);
-            color: white;
+            background-color: white; 
+            border: 1px solid var(--secondary);
+            color: var(--text);
             padding: 0.7rem 1.2rem;
-            border-radius: var(--radius); /* Rounded rectangular pills */
+            border-radius: var(--radius);
             font-weight: 500;
             font-size: 1rem;
             transition: var(--transition);
-            box-shadow: 0 3px 8px rgba(37, 99, 235, 0.2);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+            display: flex; 
+            flex-direction: column;
+            align-items: center;
+            min-width: 150px; 
+            text-align: center;
         }
-        
+
         /* Professional Skill Hover Effect */
         .skill:hover {
-            background-color: var(--primary);
+            background-color: var(--bg);
             transform: scale(1.05);
             cursor: default;
+        }
+
+        .skill-name {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-level {
+            font-size: 0.8rem;
+            color: var(--muted);
+            background-color: #e0f2fe; /* Light blue background for level tag */
+            padding: 0.2rem 0.5rem;
+            border-radius: 6px;
         }
 
         /* Projects */
@@ -248,7 +280,7 @@
             gap: 1.5rem;
         }
         
-        /* NEW: Style for the anchor wrapping the project card */
+        /* Style for the anchor wrapping the project card */
         .project-link {
             text-decoration: none;
             color: inherit; 
@@ -272,13 +304,67 @@
             cursor: pointer;
         }
 
+        /* 🟢 NEW: Project Title with Icon Styling */
         .project h3 {
             color: var(--primary);
             margin-bottom: 0.5rem;
             font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .project-icon {
+            color: var(--secondary);
+            font-size: 1.2rem;
         }
         
         .project p {
+            color: var(--muted);
+        }
+        
+        /* 🟢 NEW: Testimonials Section Styling */
+        .testimonial-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background-color: var(--bg);
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            position: relative;
+            border-top: 5px solid var(--secondary);
+        }
+
+        .quote-icon {
+            font-size: 2rem;
+            color: var(--secondary);
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            opacity: 0.2;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: var(--text);
+            margin-bottom: 1rem;
+            padding-top: 1.5rem;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .testimonial-role {
+            font-size: 0.9rem;
             color: var(--muted);
         }
 
@@ -370,6 +456,10 @@
                 grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             }
             
+            .testimonial-container {
+                grid-template-columns: 1fr;
+            }
+            
             nav ul {
                 gap: 1rem;
             }
@@ -422,7 +512,7 @@
                 padding: 3rem 0;
             }
             
-            .about, .skills, .projects, .contact {
+            .about, .skills, .projects, .contact, .testimonials {
                  padding: 1.5rem; /* Reduced padding on mobile */
             }
             
@@ -431,7 +521,8 @@
             }
 
             .skill {
-                font-size: 0.9rem;
+                min-width: unset;
+                padding: 0.5rem 0.75rem;
             }
             
             .project-grid {
@@ -455,17 +546,19 @@
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#skills" class="nav-link">Skills</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
+                <!-- 🟢 NEW NAV LINK -->
+                <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="hero">
+    <section class="hero" id="hero">
         <img src="pp.jpg" alt="Shahzaib Farrukh">
         <div class="hero-text">
             <h1>Hi, I'm Shahzaib Farrukh</h1>
             <h3>SEO Intern & Aspiring Web Developer</h3>
-            <p>Bachelor’s in Software Engineering and currently doing an SEO internship. I’m skilled in Off-Page SEO and learning front-end web development to pursue my passion for coding and design.</p>
+            <p>Bachelor’s in Software Engineering and currently doing an SEO internship. I’m skilled in Off-Page & On-Page SEO and learning front-end web development to pursue my passion for coding and design.</p>
             <a 
     href="/ShahzaibResume.pdf" 
     download="Your_Name_Professional_Resume.pdf" 
@@ -482,7 +575,7 @@
     <section id="about" class="about section-padding">
         <h2>About Me</h2>
         <p>
-            I’m a dedicated Software Engineering graduate with a strong interest in web technologies and SEO. I’ve completed a 2.5-month Web Development course from PNY Trainings, Rawalpindi, and currently work as an SEO Intern where I’ve learned Off-Page SEO strategies, link building, and optimization techniques.
+            I’m a dedicated Software Engineering graduate with a strong interest in web technologies and SEO. I’ve completed a 2.5-month Web Development course from PNY Trainings, Rawalpindi, and currently work as an SEO Intern where I’ve learned Off-Page & On-Page SEO strategies, Guest Postings, link building, and optimization techniques.
             <br><br>
             My goal is to transition into Web Development, combining my SEO knowledge with coding skills to build fast, optimized, and user-friendly websites.
         </p>
@@ -491,13 +584,35 @@
     <section id="skills" class="skills section-padding">
         <h2>Skills</h2>
         <div class="skills-list">
-            <div class="skill">HTML5</div>
-            <div class="skill">CSS3</div>
-            <div class="skill">Vanilla JavaScript</div>
-            <div class="skill">SEO (Off-Page)</div>
-            <div class="skill">WordPress</div>
-            <div class="skill">Google Analytics</div>
-            <div class="skill">Responsive Design</div>
+            <!-- 🟢 UPDATED: Skills with Proficiency Levels -->
+            <div class="skill">
+                <span class="skill-name">HTML5</span>
+                <span class="skill-level">Proficient</span>
+            </div>
+            <div class="skill">
+                <span class="skill-name">CSS3</span>
+                <span class="skill-level">Proficient</span>
+            </div>
+            <div class="skill">
+                <span class="skill-name">Vanilla JavaScript</span>
+                <span class="skill-level">Intermediate</span>
+            </div>
+            <div class="skill">
+                <span class="skill-name">SEO (Off-Page)</span>
+                <span class="skill-level">Expert</span>
+            </div>
+            <div class="skill">
+                <span class="skill-name">WordPress</span>
+                <span class="skill-level">Intermediate</span>
+            </div>
+            <div class="skill">
+                <span class="skill-name">Google Analytics</span>
+                <span class="skill-level">Familiar</span>
+            </div>
+            <div class="skill">
+                <span class="skill-name">Responsive Design</span>
+                <span class="skill-level">Proficient</span>
+            </div>
         </div>
     </section>
 
@@ -505,30 +620,53 @@
         <h2>Projects</h2>
         <div class="project-grid">
             
-            <!-- 🟢 NEW PROJECT: Knowledge Seekers Institute (Linked) -->
+            <!-- 🟢 PROJECT: Knowledge Seekers Institute (with icon) -->
             <a href="https://knowledge-seekers-ks.vercel.app/" target="_blank" class="project-link" aria-label="View Knowledge Seekers Institute website">
                 <div class="project">
-                    <h3>Knowledge Seekers Institute</h3>
+                    <h3><i class="fas fa-graduation-cap project-icon"></i> Knowledge Seekers Institute</h3>
                     <p>Fully responsive institutional website built for a coaching center using HTML, CSS, and vanilla JavaScript. Demonstrates practical application of frontend skills.</p>
                 </div>
             </a>
 
-            <!-- Portfolio Website (Now Linked) -->
+            <!-- PROJECT: Portfolio Website (with icon) -->
             <a href="https://shahzaibf-portfolio.vercel.app/" target="_blank" class="project-link" aria-label="View Personal Portfolio website">
                 <div class="project">
-                    <h3>Personal Portfolio Website</h3>
+                    <h3><i class="fas fa-desktop project-icon"></i> Personal Portfolio Website</h3>
                     <p>My current portfolio, showcasing my skills in HTML, CSS, and implementation of modern features like smooth scrolling.</p>
                 </div>
             </a>
 
-            <!-- SEO Campaign Analysis -->
+            <!-- PROJECT: SEO Campaign Analysis (with icon) -->
             <a href="#" target="_blank" class="project-link" aria-label="View SEO Campaign Analysis details">
                 <div class="project">
-                    <h3>SEO Campaign Analysis</h3>
+                    <h3><i class="fas fa-search project-icon"></i> SEO Campaign Analysis</h3>
                     <p>A sample project demonstrating Off-Page & On-Page SEO expertise, including backlink auditing, keyword strategy, and competitor analysis.</p>
                 </div>
             </a>
             
+        </div>
+    </section>
+    
+    <!-- 🟢 NEW SECTION: Testimonials -->
+    <section id="testimonials" class="testimonials section-padding">
+        <h2>What People Say</h2>
+        <div class="testimonial-container">
+            <div class="testimonial-card">
+                <i class="fas fa-quote-left quote-icon"></i>
+                <p class="testimonial-text">
+                    "Shahzaib's grasp of Off-Page SEO is exceptional. He quickly mastered complex link-building strategies and showed real dedication to optimizing site performance."
+                </p>
+                <p class="testimonial-author">Fahad Iqbal</p>
+                <p class="testimonial-role">SEO Team Lead, 99 Technologies</p>
+            </div>
+            <div class="testimonial-card">
+                <i class="fas fa-quote-left quote-icon"></i>
+                <p class="testimonial-text">
+                    "His foundation in Software Engineering combined with his frontend training makes him a valuable asset. The 'Knowledge Seekers' site showcases solid responsive design work."
+                </p>
+                <p class="testimonial-author">Hassan Ahmed</p>
+                <p class="testimonial-role">PNY Trainings, Web Development Instructor</p>
+            </div>
         </div>
     </section>
 
@@ -573,7 +711,44 @@
             }
         });
 
-        // 🟢 NEW: Smooth Scrolling Logic and Mobile Menu Close
+        // 🟢 NEW: Active Navigation State & Smooth Scrolling
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        function updateActiveLink() {
+            let current = 'about'; // Default to about or hero
+
+            // Check if the user is in the hero section (which doesn't have a padding top/bottom)
+            const heroHeight = document.querySelector('.hero').offsetHeight;
+            if (window.scrollY < heroHeight / 2) {
+                current = 'about';
+            }
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                // Check if the top of the section is visible (with a 100px offset)
+                if (window.scrollY >= sectionTop - 100 && section.id) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            // Loop through all nav links and apply the 'active' class to the current one
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        }
+        
+        // Initial call and hook up scroll event
+        window.addEventListener('scroll', updateActiveLink);
+        window.addEventListener('load', updateActiveLink);
+
+
+        // 🟢 EXISTING: Smooth Scrolling Logic and Mobile Menu Close
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', (e) => {
                 // 1. Prevent default jump behavior
