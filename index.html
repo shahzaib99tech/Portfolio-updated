@@ -715,9 +715,13 @@
 
         <!-- 🟢 UPDATED: Form action now points to your specific Formspree endpoint! -->
         <form id="contactForm" action="https://formspree.io/f/mdkqrokz" method="POST">
-            <!-- Added 'name' attributes, required for form submission -->
+            <!-- Name remains required -->
             <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="_replyto" placeholder="Your Email" required>
+            <!-- Phone Number is now REQUIRED and placeholder updated -->
+            <input type="tel" name="phone" placeholder="Your Phone Number" required> 
+            <!-- Email is now OPTIONAL and placeholder updated -->
+            <input type="email" name="_replyto" placeholder="Your Email (Optional)">
+            <!-- Message remains required -->
             <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
             <button type="submit" class="btn">Send Message</button>
         </form>
