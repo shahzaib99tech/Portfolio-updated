@@ -195,7 +195,7 @@
             display: inline-block; /* Essential for button scaling */
         }
 
-        .btn:hover {
+        .btn:hover:not(:disabled) {
             background-color: var(--accent-hover);
             transform: translateY(-2px); /* Subtle lift */
             box-shadow: 0 5px 15px rgba(30, 58, 138, 0.3);
@@ -207,9 +207,18 @@
             color: var(--secondary);
         }
         
-        .btn-secondary:hover {
+        .btn-secondary:hover:not(:disabled) {
             background-color: var(--secondary);
             color: white;
+        }
+
+        /* Disabled state */
+        .btn:disabled {
+            background-color: #9ca3af; /* Gray out */
+            cursor: not-allowed;
+            opacity: 0.7;
+            transform: none;
+            box-shadow: none;
         }
 
         /* --- 6. Section Styles (About, Skills, Projects, Contact) --- */
@@ -234,7 +243,7 @@
             justify-content: center;
         }
 
-        /* 🟢 NEW: Skill Card and Proficiency Styling */
+        /* Skill Card and Proficiency Styling */
         .skill {
             background-color: white; 
             border: 1px solid var(--secondary);
@@ -304,7 +313,7 @@
             cursor: pointer;
         }
 
-        /* 🟢 NEW: Project Title with Icon Styling */
+        /* Project Title with Icon Styling */
         .project h3 {
             color: var(--primary);
             margin-bottom: 0.5rem;
@@ -323,7 +332,7 @@
             color: var(--muted);
         }
         
-        /* 🟢 NEW: Testimonials Section Styling */
+        /* Testimonials Section Styling */
         .testimonial-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -389,6 +398,35 @@
             border-color: var(--secondary);
             outline: none;
             box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        /* 🟢 NEW: Contact Form Message Box Styling */
+        .message-box {
+            text-align: center;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            opacity: 0; /* Initially hidden */
+            transition: opacity 0.5s;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 0; /* Align with form */
+        }
+
+        .success {
+            background-color: #d1fae5; /* Green */
+            color: #065f46;
+            border: 1px solid #34d399;
+            opacity: 1;
+        }
+
+        .error {
+            background-color: #fee2e2; /* Red */
+            color: #991b1b;
+            border: 1px solid #f87171;
+            opacity: 1;
         }
         
         /* --- 7. Footer --- */
@@ -546,7 +584,6 @@
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#skills" class="nav-link">Skills</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
-                <!-- 🟢 NEW NAV LINK -->
                 <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
@@ -558,7 +595,7 @@
         <div class="hero-text">
             <h1>Hi, I'm Shahzaib Farrukh</h1>
             <h3>SEO Intern & Aspiring Web Developer</h3>
-            <p>Bachelor’s in Software Engineering and currently doing an SEO internship. I’m skilled in Off-Page & On-Page SEO and learning front-end web development to pursue my passion for coding and design.</p>
+            <p>Bachelor’s in Software Engineering and currently doing an SEO internship. I’m skilled in Off-Page SEO and learning front-end web development to pursue my passion for coding and design.</p>
             <a 
     href="/ShahzaibResume.pdf" 
     download="Your_Name_Professional_Resume.pdf" 
@@ -575,7 +612,7 @@
     <section id="about" class="about section-padding">
         <h2>About Me</h2>
         <p>
-            I’m a dedicated Software Engineering graduate with a strong interest in web technologies and SEO. I’ve completed a 2.5-month Web Development course from PNY Trainings, Rawalpindi, and currently work as an SEO Intern where I’ve learned Off-Page & On-Page SEO strategies, Guest Postings, link building, and optimization techniques.
+            I’m a dedicated Software Engineering graduate with a strong interest in web technologies and SEO. I’ve completed a 2.5-month Web Development course from PNY Trainings, Rawalpindi, and currently work as an SEO Intern where I’ve learned Off-Page SEO strategies, link building, and optimization techniques.
             <br><br>
             My goal is to transition into Web Development, combining my SEO knowledge with coding skills to build fast, optimized, and user-friendly websites.
         </p>
@@ -584,7 +621,7 @@
     <section id="skills" class="skills section-padding">
         <h2>Skills</h2>
         <div class="skills-list">
-            <!-- 🟢 UPDATED: Skills with Proficiency Levels -->
+            <!-- UPDATED: Skills with Proficiency Levels -->
             <div class="skill">
                 <span class="skill-name">HTML5</span>
                 <span class="skill-level">Proficient</span>
@@ -620,7 +657,7 @@
         <h2>Projects</h2>
         <div class="project-grid">
             
-            <!-- 🟢 PROJECT: Knowledge Seekers Institute (with icon) -->
+            <!-- PROJECT: Knowledge Seekers Institute (with icon) -->
             <a href="https://knowledge-seekers-ks.vercel.app/" target="_blank" class="project-link" aria-label="View Knowledge Seekers Institute website">
                 <div class="project">
                     <h3><i class="fas fa-graduation-cap project-icon"></i> Knowledge Seekers Institute</h3>
@@ -647,7 +684,7 @@
         </div>
     </section>
     
-    <!-- 🟢 NEW SECTION: Testimonials -->
+    <!-- NEW SECTION: Testimonials -->
     <section id="testimonials" class="testimonials section-padding">
         <h2>What People Say</h2>
         <div class="testimonial-container">
@@ -656,15 +693,15 @@
                 <p class="testimonial-text">
                     "Shahzaib's grasp of Off-Page SEO is exceptional. He quickly mastered complex link-building strategies and showed real dedication to optimizing site performance."
                 </p>
-                <p class="testimonial-author">Fahad Iqbal</p>
-                <p class="testimonial-role">SEO Team Lead, 99 Technologies</p>
+                <p class="testimonial-author">Manager Name</p>
+                <p class="testimonial-role">SEO Team Lead, Internship Company</p>
             </div>
             <div class="testimonial-card">
                 <i class="fas fa-quote-left quote-icon"></i>
                 <p class="testimonial-text">
                     "His foundation in Software Engineering combined with his frontend training makes him a valuable asset. The 'Knowledge Seekers' site showcases solid responsive design work."
                 </p>
-                <p class="testimonial-author">Hassan Ahmed</p>
+                <p class="testimonial-author">Instructor Name</p>
                 <p class="testimonial-role">PNY Trainings, Web Development Instructor</p>
             </div>
         </div>
@@ -672,10 +709,16 @@
 
     <section id="contact" class="contact section-padding">
         <h2>Contact Me</h2>
-        <form action="#" method="POST">
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <textarea placeholder="Your Message" rows="5" required></textarea>
+        
+        <!-- 🟢 NEW: Message Box placeholder -->
+        <div id="formMessage" class="message-box" style="display:none;"></div>
+
+        <!-- 🟢 UPDATED: Form action now points to your specific Formspree endpoint! -->
+        <form id="contactForm" action="https://formspree.io/f/mdkqrokz" method="POST">
+            <!-- Added 'name' attributes, required for form submission -->
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="_replyto" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
             <button type="submit" class="btn">Send Message</button>
         </form>
     </section>
@@ -711,7 +754,7 @@
             }
         });
 
-        // 🟢 NEW: Active Navigation State & Smooth Scrolling
+        // --- Active Navigation State & Smooth Scrolling ---
         const sections = document.querySelectorAll('section');
         const navLinks = document.querySelectorAll('.nav-link');
 
@@ -748,7 +791,7 @@
         window.addEventListener('load', updateActiveLink);
 
 
-        // 🟢 EXISTING: Smooth Scrolling Logic and Mobile Menu Close
+        // Smooth Scrolling Logic and Mobile Menu Close
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', (e) => {
                 // 1. Prevent default jump behavior
@@ -772,6 +815,72 @@
                     menuToggle.querySelector('i').classList.add('fa-bars');
                 }
             });
+        });
+        
+        
+        // 🟢 NEW: Form Submission Handling (Formspree Integration)
+        const form = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+
+        // Function to show the status message
+        function showMessage(type, message) {
+            // Ensure message box is visible for animation
+            formMessage.style.display = 'block'; 
+            formMessage.textContent = message;
+            formMessage.className = 'message-box ' + type;
+            
+            // Hide the message after 5 seconds
+            setTimeout(() => {
+                formMessage.style.opacity = '0';
+                setTimeout(() => { formMessage.style.display = 'none'; }, 500);
+            }, 5000);
+        }
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const formBtn = form.querySelector('button');
+            const originalText = formBtn.textContent;
+            
+            // Disable button and show loading state
+            formBtn.disabled = true;
+            formBtn.textContent = 'Sending...';
+
+            // IMPORTANT: The form's action URL is set up on Formspree
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    showMessage('success', 'Thank you! Your message has been sent successfully.');
+                    form.reset();
+                } else {
+                    let errorText = 'Oops! There was an issue submitting your message. Check the console for details.';
+                    try {
+                        const data = await response.json();
+                        if (data.error) {
+                            errorText = 'Error: ' + data.error;
+                        }
+                    } catch (jsonError) {
+                        // Response might not be JSON, use generic error.
+                    }
+                    showMessage('error', errorText);
+                }
+            } catch (error) {
+                console.error('Form submission failed due to network or client error:', error);
+                showMessage('error', 'Network error. Please try again later.');
+            } finally {
+                // Re-enable button
+                formBtn.disabled = false;
+                formBtn.textContent = originalText;
+            }
         });
     </script>
 </body>
